@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.hidden {
+			display: none;
+		}
+
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" width="1280" height="720">
+	</canvas>
+	<div class="hidden">
+		<svg id="paperPlane" version="1.1" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="70" viewBox="0 0 103 35.5" xml:space="preserve"> <polygon fill="#FFFFFF" points="28.83,35 39.3,15 53.79,15 73.79,35"/> <path d="M53.59,15.5l19,19H29.65l9.95-19H53.59 M54,14.5H39l-11,21h47L54,14.5L54,14.5z"/> <polygon fill="#FFFFFF" points="21.66,1 48.62,1 52.22,14 38.7,14 29.91,30.79"/> <path d="M48.24,1.5l3.32,12H39h-0.61l-0.28,0.54l-8.06,15.4L22.31,1.5H48.24 M49,0.5H21l8.76,31.64L39,14.5h13.88L49,0.5L49,0.5z"/> <polygon fill="#FFFFFF" points="21.68,0.5 21.5,0 21.21,0.5"/> <polygon points="21.5,0 21.21,0.5 21.68,0.5 21.5,0"/> <polygon fill="#FFFFFF" points="7.37,25 20.9,2.01 27.27,25	"/> <path d="M20.73,3.28l5.88,21.22H8.25L20.73,3.28 M21.07,0.74L6.5,25.5h21.42L21.07,0.74L21.07,0.74z"/> <polygon fill="#FFFFFF" points="0.67,3 19.16,3 6.98,23.7	"/> <path d="M18.28,3.5L7.12,22.47L1.35,3.5H18.28 M20.03,2.5H0l6.83,22.44L20.03,2.5L20.03,2.5z"/> <polygon fill="#FFFFFF" points="74.45,34.25 54.21,14 53.26,14 52.57,11.5 95.4,11.5 75.32,34.45"/> <path d="M94.3,12L75.14,33.89l-0.44-0.1l-20-20l-0.29-0.29H54h-0.36L53.22,12H94.3 M96.5,11H51.91l0.97,3.5H54l20.2,20.2l1.3,0.3L96.5,11L96.5,11z"/> <polygon fill="#FFFFFF" points="88.41,21 95.17,13.29 101.9,21"/> <path d="M95.16,14.04l5.64,6.46H89.52L95.16,14.04 M95.17,12.53L95.17,12.53l-7.85,8.97H103L95.17,12.53L95.17,12.53z"/> <polygon fill="#FFFFFF" points="52.29,10.5 51.46,7.5 84.33,7.5 88.33,10.5"/> <path d="M84.17,8l2.67,2H52.67l-0.55-2H84.17 M84.5,7H50.8l1.11,4h37.93L84.5,7L84.5,7z"/> </svg> 
+		<svg id="vent" width="130" version="1.1" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"x="0px" y="0px" viewBox="0 0 103 27" xml:space="preserve"> <polygon fill="#C3C300" points="83,0 0,0 0,7 20,27 103,27 103,20 "/> <line fill="none" stroke="#000000" stroke-miterlimit="10" x1="26.8" y1="21" x2="9.8" y2="4"/> <line fill="none" stroke="#000000" stroke-miterlimit="10" x1="33" y1="21" x2="16" y2="4"/> <line fill="none" stroke="#000000" stroke-miterlimit="10" x1="39.2" y1="21" x2="22.2" y2="4"/> <line fill="none" stroke="#000000" stroke-miterlimit="10" x1="45.4" y1="21" x2="28.4" y2="4"/> <line fill="none" stroke="#000000" stroke-miterlimit="10" x1="51.6" y1="21" x2="34.6" y2="4"/> <line fill="none" stroke="#000000" stroke-miterlimit="10" x1="57.8" y1="21" x2="40.8" y2="4"/> <line fill="none" stroke="#000000" stroke-miterlimit="10" x1="64" y1="21" x2="47" y2="4"/> <line fill="none" stroke="#000000" stroke-miterlimit="10" x1="70.2" y1="21" x2="53.2" y2="4"/> <line fill="none" stroke="#000000" stroke-miterlimit="10" x1="76.4" y1="21" x2="59.4" y2="4"/> <line fill="none" stroke="#000000" stroke-miterlimit="10" x1="82.6" y1="21" x2="65.6" y2="4"/> <line fill="none" stroke="#000000" stroke-miterlimit="10" x1="88.8" y1="21" x2="71.8" y2="4"/> <line fill="none" stroke="#000000" stroke-miterlimit="10" x1="95" y1="21" x2="78" y2="4"/> </svg>
+		<svg id="cabinet" width="480" version="1.1" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 440.36 221.63" xml:space="preserve"> <rect x="12.99" y="195.61" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="412.94" height="24.52"/> <rect x="6.78" y="16.05" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="425.36" height="192.4"/> <rect x="1.5" y="1.5" fill="#FF0000" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="437.36" height="14.55"/> <rect x="26.01" y="33.67" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="108.77" height="158.81"/> <rect x="165.07" y="33.67" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="108.77" height="158.81"/> <rect x="304.71" y="33.67" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="108.77" height="158.81"/> </svg>
+		<svg id="table" width="380" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"x="0px" y="0px" viewBox="0 0 382 261.5" xml:space="preserve"> <polygon fill="#C3C300" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="188,236 130,257 130,250 187,219 "/> <rect x="86" y="113" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 311 -75)" fill="#A2A2A6" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="214" height="10"/> <rect x="1.5" y="1.5" fill="#C3C300" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="379" height="19"/> <rect x="125" y="244" fill="#C3C300" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="10" height="12"/> <rect x="125" y="254" fill="#A2A2A6" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="10" height="6"/> <polygon fill="#C3C300" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="198,236 256,257 256,250 199,219 "/> <rect x="251" y="244" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 512 500)" fill="#C3C300" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="10" height="12"/> <rect x="251" y="254" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 512 514)" fill="#A2A2A6" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="10" height="6"/> <rect x="181.5" y="217.5" fill="#C3C300" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="23" height="26"/> </svg>
+		<svg id="computer" width="120" version="1.1" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"x="0px" y="0px" viewBox="0 0 98 129" xml:space="preserve"> <path fill="#E1E161" stroke="#000000" stroke-width="3" stroke-miterlimit="10" d="M89.16,127.5H8.84c-4.05,0-7.34-3.29-7.34-7.34 V8.84c0-4.05,3.29-7.34,7.34-7.34h80.32c4.05,0,7.34,3.29,7.34,7.34v111.32C96.5,124.21,93.21,127.5,89.16,127.5z"/> <path fill="#E1E161" stroke="#000000" stroke-width="3" stroke-miterlimit="10" d="M89.16,106.5H8.84c-4.05,0-7.34-3.29-7.34-7.34 V8.84c0-4.05,3.29-7.34,7.34-7.34h80.32c4.05,0,7.34,3.29,7.34,7.34v90.32C96.5,103.21,93.21,106.5,89.16,106.5z"/> <path fill="#00FFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" d="M83.59,67.5H15.41c-2.16,0-3.91-1.75-3.91-3.91 V15.41c0-2.16,1.75-3.91,3.91-3.91h68.18c2.16,0,3.91,1.75,3.91,3.91v48.18C87.5,65.75,85.75,67.5,83.59,67.5z"/> <rect x="47.5" y="85.5" fill="#C3C300" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="35" height="2"/> <rect x="38.5" y="37" fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="37.5" height="22.5"/> <line fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" x1="76" y1="41" x2="38.5" y2="41"/> <rect x="27.5" y="20" fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="37.5" height="31"/> <rect x="27.5" y="20" fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="37.5" height="4.13"/> </svg>
+		<svg id="clock" width="50" version="1.1" baseProfile="tiny"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"x="0px" y="0px" viewBox="0 0 57 63.48" xml:space="preserve"> <polygon fill="#FFFF00" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="16.5,48.98 24.5,48.98 18.5,61.98 10.5,61.98 "/> <polygon fill="#FFFF00" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="41.5,48.98 33.5,48.98 39.5,61.98 47.5,61.98 "/> <circle fill="#FFFF00" stroke="#000000" stroke-width="3" stroke-miterlimit="10" cx="28.5" cy="29.98" r="27"/> <circle fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" cx="28.5" cy="29.98" r="19"/> <path fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" d="M5.72,14.7c-3.02-3.02-3.02-7.92,0-10.94 s7.92-3.02,10.94,0L5.72,14.7z"/> <path fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" d="M40.25,3.76c3.02-3.02,7.92-3.02,10.94,0 c3.02,3.02,3.02,7.92,0,10.94L40.25,3.76z"/> <polyline fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="37,38.48 29,30.48 29,14.48 "/> </svg>
+		<svg id="books" width="120" version="1.1" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"x="0px" y="0px" viewBox="0 0 139 123" xml:space="preserve"> <rect x="105.5" y="16.5" fill="#0000FF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="32" height="105"/> <rect x="88.5" y="35.5" width="16" height="86"/> <path d="M103,37v83H90V37H103 M106,34H87v89h19V34L106,34z"/> <rect x="41.5" y="10.5" fill="#C3C3C3" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="25" height="111"/> <rect x="21.5" y="3.5" fill="#C300C3" width="20" height="118"/> <path d="M40,5v115H23V5H40 M43,2H20v121h23V2L43,2z"/> <rect x="1.5" y="20.5" width="17" height="101"/> <path d="M17,22v98H3V22H17 M20,19H0v104h20V19L20,19z"/> <rect x="105.5" y="27.5" fill="#FFFF00" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="32" height="27"/> <rect x="65.5" y="1.5" fill="#00C300" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="22" height="120"/> <rect x="65.5" y="16.5" width="21.71" height="41.27"/> <rect x="2" y="31.56" fill="#0000FF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="18" height="5.57"/> <rect x="2" y="101.78" fill="#0000FF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="18" height="5.57"/> </svg>
+		<svg id="shelf" width="380" version="1.1" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 422.23 78.86" xml:space="preserve"> <polygon fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="383.2,26.15 394.69,26.15 394.69,65.82 383.2,73.78 "/> <polygon fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="371.71,26.15 382.24,26.15 382.24,73.78 371.71,65.82 "/> <rect x="387.03" y="9.16" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="7.66" height="26.32"/> <rect x="371.71" y="9.16" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="7.66" height="26.32"/> <rect x="379.37" y="26.15" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="7.66" height="51.2"/> <rect x="379.37" y="9.16" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="7.66" height="33.98"/> <polygon fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="50.01,26.15 61.5,26.15 61.5,65.82 50.01,73.78 "/> <polygon fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="38.52,26.15 49.05,26.15 49.05,73.78 38.52,65.82 "/> <rect x="53.84" y="9.16" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="7.66" height="26.32"/> <rect x="38.52" y="9.16" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="7.66" height="26.32"/> <rect x="46.18" y="26.15" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="7.66" height="51.2"/> <rect x="46.18" y="9.16" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="7.66" height="33.98"/> <rect x="1.5" y="1.5" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="419.23" height="15.32"/> </svg>
+		<svg id="battery" width="30" version="1.1" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 27 53.5" xml:space="preserve"> <path fill="#C3C300" d="M5.38,52c-2.14,0-3.88-1.74-3.88-3.88V10.88C1.5,8.74,3.24,7,5.38,7h16.23c2.14,0,3.88,1.74,3.88,3.88 v37.23c0,2.14-1.74,3.88-3.88,3.88H5.38z"/> <path d="M21.62,8.5c1.31,0,2.38,1.07,2.38,2.38v37.23c0,1.31-1.07,2.38-2.38,2.38H5.38C4.07,50.5,3,49.43,3,48.12V10.88 C3,9.57,4.07,8.5,5.38,8.5H21.62 M21.62,5.5H5.38C2.41,5.5,0,7.91,0,10.88v37.23c0,2.97,2.41,5.38,5.38,5.38h16.23 c2.97,0,5.38-2.41,5.38-5.38V10.88C27,7.91,24.59,5.5,21.62,5.5L21.62,5.5z"/> <path fill="#828282" stroke="#000000" stroke-width="3" stroke-miterlimit="10" d="M18,10.5V3.92c0-1.34-1.08-2.42-2.42-2.42h-3.71 c-1.34,0-2.42,1.08-2.42,2.42v6.58"/> <path d="M27,25.5V10.88c0-2.97-2.41-5.38-5.38-5.38H5.38C2.41,5.5,0,7.91,0,10.88V25.5H27z"/> </svg>
+		<svg id="balloon" width="80" version="1.1" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.4 143.29" xml:space="preserve"> <polyline fill="#FF0000" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="46.2,134.8 46.2,117.97 34.45,130.71 "/> <ellipse transform="matrix(0.9659 -0.2588 0.2588 0.9659 -33.5416 14.9038)" fill="#FF0000" stroke="#000000" stroke-width="3" stroke-miterlimit="10" cx="39.83" cy="134.84" rx="6.55" ry="6.98"/> <ellipse transform="matrix(0.5 -0.866 0.866 0.5 -24.0829 84.5747)" fill="#FF0000" stroke="#000000" stroke-width="3" stroke-miterlimit="10" cx="61.2" cy="63.14" rx="62.58" ry="58.7"/> </svg>
+	</div>
+	<script>
+
+// Canvas
+var canvasElem = document.getElementById("myCanvas");
+var c = canvasElem.getContext('2d');
+var settings = {
+	w: canvasElem.width,
+	h: canvasElem.height,
+}
+
+// Plane + Controls
+
+var glider = {
+	elem: document.getElementById('paperPlane'),
+	svg: new Image(),
+	x: 50,
+	y: 50,
+	peak:false,
+	right:false,
+	left:false
+}
+glider.svg.src = "data:image/svg+xml;base64,"+btoa(glider.elem.outerHTML);
+
+var vent = {
+	elem: document.getElementById('vent'),
+	svg: new Image()
+}
+vent.svg.src = "data:image/svg+xml;base64,"+btoa(vent.elem.outerHTML);
+
+var books = {
+	elem: document.getElementById('books'),
+	svg: new Image()
+}
+books.svg.src = "data:image/svg+xml;base64,"+btoa(books.elem.outerHTML);
+
+var battery = {
+	elem: document.getElementById('battery'),
+	svg: new Image()
+}
+battery.svg.src = "data:image/svg+xml;base64,"+btoa(battery.elem.outerHTML);
+
+var balloon = {
+	elem: document.getElementById('balloon'),
+	svg: new Image()
+}
+balloon.svg.src = "data:image/svg+xml;base64,"+btoa(balloon.elem.outerHTML);
+
+var shelf = {
+	elem: document.getElementById('shelf'),
+	svg: new Image()
+}
+shelf.svg.src = "data:image/svg+xml;base64,"+btoa(shelf.elem.outerHTML);
+
+var computer = {
+	elem: document.getElementById('computer'),
+	svg: new Image()
+}
+computer.svg.src = "data:image/svg+xml;base64,"+btoa(computer.elem.outerHTML);
+
+var table = {
+	elem: document.getElementById('table'),
+	svg: new Image()
+}
+table.svg.src = "data:image/svg+xml;base64,"+btoa(table.elem.outerHTML);
+
+var cabinet = {
+	elem: document.getElementById('cabinet'),
+	svg: new Image()
+}
+cabinet.svg.src = "data:image/svg+xml;base64,"+btoa(cabinet.elem.outerHTML);
+
+var clock = {
+	elem: document.getElementById('clock'),
+	svg: new Image()
+}
+clock.svg.src = "data:image/svg+xml;base64,"+btoa(clock.elem.outerHTML);
+
+var room = {
+current: 0,
+0: [],
+1: [],
+2: []
+}
+	var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+	function render() {
+
+		if (glider.y != settings.h-50) {
+			glider.y++;
+		}
+		if (glider.y < 50 && glider.peak == false) {
+			glider.y++;
+		}
+
+		if (glider.right == true) {
+			glider.x += 4
+		}
+		if (glider.left == true) {
+			glider.x -= 2;
+		}
+		if (glider.y == 430) {
+			minusLife()
+		}
+
+if (glider.x >= 1220) {
+	room.current++;
+	glider.x = 20;
+}
+if (glider.x <= -4) {
+	room.current--;
+	glider.x = 1220;
+}
+	    c.clearRect(0, 0, settings.w, settings.h);
+	    c.fillStyle = "#EEEEEE";
+	    c.fillRect(0, 0, settings.w, settings.h);
+		
+	    c.drawImage(glider.svg, glider.x, glider.y);
+
+switch (room.current) {
+  case 0:
+   		makeVent(150);
+		makeVent(1040);
+		makeTable(462);
+		makeComputer(470);
+		makeClock(790,396);
+    break;
+  case 1:
+  		makeVent(150);
+		makeVent(1040);
+		makeShelf(480, 223);
+		makeBooks(480, 120);
+		makeBooks(600, 120);
+		makeClock(799,170);
+    break;
+  case 2:
+  makeVent(150);
+	makeVent(1040);
+	makeVent(750);
+  makeTable(522);
+  makeClock(829,396);
+    break;
+  case 3:
+  makeVent(110);
+  makeVent(840);
+  makeCabinet(310,415);
+	makeShelf(450, 163);
+	makeBattery(790, 105);
+    break;
+  case 4:
+ 	 makeBalloon(50,50)
+    break;
+  case 5:
+    day = "Friday";
+    break;
+  case 6:
+    day = "Saturday";
+}
+	    requestAnimationFrame(render);
+	}
+	render();
+
+
+// Obstacles
+
+function minusLife () {
+	glider.y = 20;
+}
+function makeVent(position) {
+	    c.drawImage(vent.svg, position, 650);
+	    if(glider.x >= position-50 && glider.x <= position) {
+	    	glider.y -= 4;
+	    }
+	}
+	function makeBooks(x,y) {
+	    c.drawImage(books.svg, x, y);
+
+	}
+
+	function makeBattery(x,y) {
+	    c.drawImage(battery.svg, x, y);
+
+	}
+	function makeBalloon(x,y) {
+	    c.drawImage(balloon.svg, x, y);
+	}
+	function makeShelf(x,y) {
+	    c.drawImage(shelf.svg, x, y);
+
+	}
+	function makeCabinet(x,y) {
+	    c.drawImage(cabinet.svg, x, y);
+	    	// if (glider.y > 227) {
+	    	// 	if(glider.x >= position-66 && glider.x <= position+166 ) {
+	    	// 		minusLife ()
+	    	// 	}
+	    	// }
+	}
+
+	function makeTable(position) {
+	    c.drawImage(table.svg, position, 450);
+		// if (glider.y <= 227 && glider.y >= 180 ) {
+	    // 		if(glider.x >= position-66 && glider.x <= position+166 ) {
+	    // 			minusLife ()
+	    // 		}
+	    // 	}
+	}
+	function makeComputer(position) {
+	    c.drawImage(computer.svg, position, 295);
+		// if (glider.y <= 227 && glider.y >= 180 ) {
+	    // 		if(glider.x >= position-66 && glider.x <= position+166 ) {
+	    // 			minusLife ()
+	    // 		}
+	    // 	}
+	}
+	function makeClock(x,y) {
+	    c.drawImage(clock.svg, x,y);
+		// if (glider.y <= 227 && glider.y >= 180 ) {
+	    // 		if(glider.x >= position-66 && glider.x <= position+166 ) {
+	    // 			minusLife ()
+	    // 		}
+	    // 	}
+	}
+// Event Listeners
+document.addEventListener("keydown", keyDown, false);
+document.addEventListener("keyup", keyUp, false);
+
+function keyDown(e) {
+  if(e.keyCode==39) {
+  	glider.right = true
+  } else if (e.keyCode==37) {
+  	glider.left = true
+  }
+}
+
+function keyUp(e) {
+  if(e.keyCode==39) {
+  	glider.right = false
+  } else if (e.keyCode==37) {
+  	glider.left = false
+  }
+}
+
+</script>
+</body>
+
+</html>
