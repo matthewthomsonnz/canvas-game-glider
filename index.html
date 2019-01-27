@@ -34,6 +34,7 @@ class GliderClass {
 			glider: {},
 			keyDown: {},
 			canvas: {},
+			level: 0,
 			requestAnimationFrame: window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame,
 			getItems: function(){
 				let obj = {}
@@ -53,9 +54,12 @@ class GliderClass {
 				});
 				return obj;
 
-			}
+			},
+			enemies: null
 		});
+		this.enemies = this.getItems()
 		this.init();
+		
 		document.addEventListener(
 		'keyup', this.key.bind(this), false
 		);
@@ -78,7 +82,7 @@ class GliderClass {
 			break;
 		case "d":
 			this.keyDown.d = down;
-			break;dd
+			break;
 		case "c":
 			if (!down) p1.chase ? p1.chase=false : p1.chase=true;
 		}
@@ -94,6 +98,34 @@ class GliderClass {
 		g.right = false;
 		g.left = false;
 	}
+	makeEnemy(x, y, enemy) {
+		const c = this.canvas.elem.getContext('2d');
+		c.drawImage(enemy.svg, x, y);
+	}
+	setLevel(){
+		switch (this.level) {
+		case 0:
+			this.makeEnemy(555, 650, this.enemies.vent)
+			break;
+		case 1:
+
+			break;
+		case 2:
+
+			break;
+		case 3:
+
+			break;
+		case 4:
+
+			break;
+		case 5:
+
+			break;
+		case 6:
+
+		}
+	}
 	init(){
 		this.canvas.elem = document.getElementById("myCanvas");
 		this.canvas.w = this.canvas.elem.width;
@@ -101,13 +133,13 @@ class GliderClass {
 		this.getItems();
 		this.setGlider();
 		this.startAnimate()
-		console.log(this.getItems())
+
 	}
 	render() {
 		const c = this.canvas.elem.getContext('2d');
 		c.clearRect(0, 0, c.canvas.width, c.canvas.height);
-	c.drawImage(this.glider.svg, this.glider.x, this.glider.y);
-	this.makeEnemy(555)
+		c.drawImage(this.glider.svg, this.glider.x, this.glider.y);
+		this.setLevel()
 	}
 	gliderPos(){
 		const c = this.canvas.elem.getContext('2d');
@@ -119,10 +151,7 @@ class GliderClass {
 	minusLife(){
 		this.glider.y=this.glider.x=40
 	}
-	makeEnemy(position) {
-		const c = this.canvas.elem.getContext('2d');
-		c.drawImage(this.glider.svg, position, 650);
-	}
+
 	startAnimate () {
 		requestAnimationFrame(this.startAnimate.bind(this));
 		this.gliderPos()
