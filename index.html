@@ -37,7 +37,7 @@ class GliderGame {
 			glider: {},
 			keyDown: {},
 			canvas: {},
-			currentLevel: 1,
+			currentLevel: 0,
 			requestAnimationFrame: window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame,
 			returnAllObstacles: function(){
 				let obj = {}
@@ -92,9 +92,16 @@ class GliderGame {
 		}
 	}
 
-	make(x, y, enemy) {
+	make(obstacles) {
+
 	
-		const plane = this.obstacles.glider
+
+
+		obstacles.forEach((obstacle) => {
+			
+			var [x, y, enemy] = obstacle
+
+			const plane = this.obstacles.glider
 
 		if(enemy.elem.id == "helicopter" ||
 		   enemy.elem.id == "balloon") {
@@ -152,55 +159,54 @@ class GliderGame {
 		if(enemy.elem.id == "balloon") {
 			this.obstacles.balloon.exists != true ? this.obstacles.balloon.exists = true : null;
 		}
+		})
+
+		
 	}
 	Levels(){
 		switch (this.currentLevel) {
 		case 0:
-			this.make(150, 670, this.obstacles.vent)
-			this.make(410, 450, this.obstacles.table)
-			this.make(420, 295, this.obstacles.computer)
-			this.make(850, 396, this.obstacles.clock)
-			this.make(1040, 670, this.obstacles.vent)
-			this.make(222, 109, this.obstacles.cracks)
+			let obstacles = [ [150, 670, this.obstacles.vent], [410, 450, this.obstacles.table], [420, 295, this.obstacles.computer], [850, 396, this.obstacles.clock], [1040, 670, this.obstacles.vent], [222, 109, this.obstacles.cracks] ]
+			this.make(obstacles)
 			break;
 		case 1:
-			this.make(150, 670, this.obstacles.vent);
-			this.make(1040, 670, this.obstacles.vent);
-			this.make(480, 230, this.obstacles.shelf);
-			this.make(480, 127, this.obstacles.books);
-			this.make(600, 127, this.obstacles.books);
-			this.make(799, 177, this.obstacles.clock);
-			this.make(222, 109, this.obstacles.pipe)
+			// this.make(150, 670, this.obstacles.vent);
+			// 1040, 670, this.obstacles.vent);
+			// 480, 230, this.obstacles.shelf);
+			// 480, 127, this.obstacles.books);
+			// 600, 127, this.obstacles.books);
+			// 799, 177, this.obstacles.clock);
+			// 222, 109, this.obstacles.pipe)
 			break;
 		case 2:
-			this.make(150, 670, this.obstacles.vent);
-			this.make(840, 670, this.obstacles.vent);
-			this.make(1090, 670, this.obstacles.vent);
-			this.make(482, 450, this.obstacles.table);
-			this.make(500, 397, this.obstacles.clock);
+			// 150, 670, this.obstacles.vent);
+			// 840, 670, this.obstacles.vent);
+			// 1090, 670, this.obstacles.vent);
+			// 482, 450, this.obstacles.table);
+			// 500, 397, this.obstacles.clock);
 			break;
 		case 3:
-			this.make(110, 670, this.obstacles.vent);
-			this.make(280, 445, this.obstacles.cabinet);
-			this.make(482, 160, this.obstacles.shelf);
-			this.make(820, 122, this.obstacles.battery);
-			this.make(940, 670, this.obstacles.vent);
+			// 110, 670, this.obstacles.vent);
+			// 280, 445, this.obstacles.cabinet);
+			// 482, 160, this.obstacles.shelf);
+			// 820, 122, this.obstacles.battery);
+			// 940, 670, this.obstacles.vent);
 			break;
 		case 4:
-			this.make(150, 670, this.obstacles.vent)
-			this.make(482, 450, this.obstacles.table);
-			this.make(500, 397, this.obstacles.clock);
-			this.make(800, 57, this.obstacles.wallcabinet);
-			this.make(Math.floor(Math.random() * 1280), 670, this.obstacles.balloon);
-			this.make(1040, 670, this.obstacles.vent)
+			// 150, 670, this.obstacles.vent)
+			// 482, 450, this.obstacles.table);
+			// 500, 397, this.obstacles.clock);
+			// 800, 57, this.obstacles.wallcabinet);
+			// Math.floor(Math.random() * 1280), 670, this.obstacles.balloon);
+			// 1040, 670, this.obstacles.vent)
 			break;
 		case 5:
-			this.make(150, 670, this.obstacles.vent)
-			this.make(532, 383, this.obstacles.candle);
-			this.make(500, 500, this.obstacles.helicopter);
-			this.make(410, 450, this.obstacles.table)
-			this.make(700, 346, this.obstacles.books)
-			this.make(1040, 670, this.obstacles.vent)
+			// 150, 670, this.obstacles.vent)
+			// 532, 383, this.obstacles.candle);
+			// 500, 500, this.obstacles.helicopter);
+			// 410, 450, this.obstacles.table)
+			// 700, 346, this.obstacles.books)
+			// 1040, 670, this.obstacles.vent)
 			break;
 		case 6:
 
