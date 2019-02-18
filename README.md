@@ -1,3 +1,4 @@
 # 2D-Canvas-Game-Demo
 
-Live Demo
+# Live demo
+[Click here](https://matthewthomsonnz.github.io/2D-Canvas-Game-Demo/)
