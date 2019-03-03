@@ -14,7 +14,7 @@
 					glider: {},
 					keyDown: {},
 					canvas: {},
-					currentLevel: 0,
+					currentLevel: 5,
 					requestAnimationFrame: window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame,
 					returnAllObstacles: function(){
 						let obj = {}
@@ -25,7 +25,7 @@
 							eachObstacle.svg = new Image();
 							eachObstacle.svg.src = "data:image/svg+xml;base64,"+btoa(eachObstacle.elem.outerHTML);
 							eachObstacle.x = 50;
-							eachObstacle.y = -50;
+							eachObstacle.y = 20;
 							eachObstacle.start = 0;
 							eachObstacle.isObstacle = svgElement.getAttribute('data-obstacle');
 							eachObstacle.w = parseInt(svgElement.getAttribute('width'));
@@ -87,13 +87,13 @@
 					}
 				})
 			}
-			Levels(){
+			levels(){
 				let levelObstacles;
 				let ob = this.obstacles;
 				switch (this.currentLevel) {
 				case 0:
 					levelObstacles = [ [150,670,ob.vent], [410,450,ob.table], [420, 295, ob.computer], [850, 396, ob.clock], [1040, 670, ob.vent], [222, 109, ob.cracks]]
-					if (this.obstacles.glider.x < 20) this.obstacles.glider.x += 7
+					if (this.obstacles.glider.x < 20) this.obstacles.glider.x += 7;
 				break;
 				case 1:
 					levelObstacles = [[150, 670, ob.vent], [1040, 670, ob.vent], [480, 230, ob.shelf], [480, 127, ob.books], [600, 127, ob.books], [799, 177, ob.clock], [222, 109, ob.pipe]]
@@ -105,10 +105,10 @@
 					levelObstacles = [[110, 670, ob.vent], [280, 445, ob.cabinet], [482, 160, ob.shelf], [820, 122, ob.battery], [940, 670, ob.vent]];
 				break;
 				case 4:
-					levelObstacles = [[150, 670, ob.vent], [482, 450, ob.table], [500, 397, ob.clock], [800, 57, ob.wallcabinet], [1040, 670, ob.vent], [1, 670, ob.balloon]];
+					levelObstacles = [[150, 670, ob.vent], [440, 450, ob.table], [500, 397, ob.clock], [810, 57, ob.wallcabinet], [1040, 670, ob.vent], [1, 670, ob.balloon]];
 				break;
 				case 5:
-				levelObstacles = [[150, 670, ob.vent], [532, 383, ob.candle], [410, 450, ob.table], [700, 346, ob.books], [1040, 670, ob.vent], [500, 500, ob.helicopter]];
+				  levelObstacles = [[230, 670, ob.vent], [512, 383, ob.candle], [400, 450, ob.table], [690, 346, ob.books], [1040, 670, ob.vent], [500, 500, ob.helicopter]];
 				break;
 				case 6:
 				levelObstacles = []
@@ -140,15 +140,13 @@
 				c.strokeRect(-10,100,c.canvas.width+20,10);
 				c.strokeRect(-10,580,c.canvas.width+20,20);
 				c.strokeRect(-10,580,c.canvas.width+20,50);
-				this.Levels()
+				this.levels()
 				c.drawImage(this.obstacles.glider.svg, this.obstacles.glider.x, this.obstacles.glider.y);
 			}
 			gliderPosition(){
-				this.obstacles.glider.y <= this.canvas.h-60 ? this.obstacles.glider.y += 2 : this.minusLife()
-				this.keyDown.d == true ? this.obstacles.glider.x += 7 : null;
-				this.keyDown.a == true ? this.obstacles.glider.x -= 7 : null;
-				if(this.keyDown.s == true) this.obstacles.glider.y += 1;
-				if(this.keyDown.w == true) this.obstacles.glider.y -= 1;
+				this.obstacles.glider.y <= this.canvas.h-60 ? this.obstacles.glider.y += 3 : this.minusLife()
+				this.keyDown.d == true ? this.obstacles.glider.x += 6 : null;
+				this.keyDown.a == true ? this.obstacles.glider.x -= 6 : null;
 				if (this.obstacles.glider.x >= this.canvas.w-100) {
 					this.currentLevel++
 					this.obstacles.glider.x = 50
@@ -186,7 +184,7 @@
 			<svg id="cabinet" width="480" data-obstacle="true" data-animals="['cat', 'dog', 'bird']" version="1.1" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 440.36 221.63" xml:space="preserve"> <rect x="12.99" y="195.61" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="412.94" height="24.52"/> <rect x="0.78" y="16.05" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="437.36" height="192.4"/> <rect x="1.5" y="1.5" fill="#FF0000" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="437.36" height="14.55"/> <rect x="26.01" y="33.67" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="108.77" height="158.81"/> <rect x="165.07" y="33.67" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="108.77" height="158.81"/> <rect x="304.71" y="33.67" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="108.77" height="158.81"/> </svg>
 			<svg id="table" width="500" data-height="20" data-obstacle="true" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"x="0px" y="0px" viewBox="0 0 510.06 261.5" xml:space="preserve"> <polygon fill="#C3C300" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="249.18,236 191.18,257 191.18,250 248.18,219 "/> <rect x="249.18" y="11" fill="#A2A2A6" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="10" height="214"/> <rect x="1.5" y="1.5" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="507.06" height="19"/> <rect x="186.18" y="244" fill="#C3C300" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="10" height="12"/> <rect x="186.18" y="254" fill="#A2A2A6" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="10" height="6"/> <polygon fill="#C3C300" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="259.18,236 317.18,257 317.18,250 260.18,219 "/> <rect x="312.18" y="244" fill="#C3C300" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="10" height="12"/> <rect x="312.18" y="254" fill="#A2A2A6" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="10" height="6"/> <rect x="242.68" y="217.5" fill="#C3C300" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="23" height="26"/> </svg>
 			<svg id="computer" width="120" data-height="144"  data-obstacle="true" data-boundaries="[[0,0,120,200], [220,220,120,120]]" version="1.1" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"x="0px" y="0px" viewBox="0 0 98 129" xml:space="preserve"> <path fill="#E1E161" stroke="#000000" stroke-width="3" stroke-miterlimit="10" d="M89.16,127.5H8.84c-4.05,0-7.34-3.29-7.34-7.34 V8.84c0-4.05,3.29-7.34,7.34-7.34h80.32c4.05,0,7.34,3.29,7.34,7.34v111.32C96.5,124.21,93.21,127.5,89.16,127.5z"/> <path fill="#E1E161" stroke="#000000" stroke-width="3" stroke-miterlimit="10" d="M89.16,106.5H8.84c-4.05,0-7.34-3.29-7.34-7.34 V8.84c0-4.05,3.29-7.34,7.34-7.34h80.32c4.05,0,7.34,3.29,7.34,7.34v90.32C96.5,103.21,93.21,106.5,89.16,106.5z"/> <path fill="#00FFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" d="M83.59,67.5H15.41c-2.16,0-3.91-1.75-3.91-3.91 V15.41c0-2.16,1.75-3.91,3.91-3.91h68.18c2.16,0,3.91,1.75,3.91,3.91v48.18C87.5,65.75,85.75,67.5,83.59,67.5z"/> <rect x="47.5" y="85.5" fill="#C3C300" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="35" height="2"/> <rect x="38.5" y="37" fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="37.5" height="22.5"/> <line fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" x1="76" y1="41" x2="38.5" y2="41"/> <rect x="27.5" y="20" fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="37.5" height="31"/> <rect x="27.5" y="20" fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="37.5" height="4.13"/> </svg>
-			<svg id="clock" width="50" data-obstacle="true" version="1.1" baseProfile="tiny"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"x="0px" y="0px" viewBox="0 0 57 63.48" xml:space="preserve"> <polygon fill="#FFFF00" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="16.5,48.98 24.5,48.98 18.5,61.98 10.5,61.98 "/> <polygon fill="#FFFF00" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="41.5,48.98 33.5,48.98 39.5,61.98 47.5,61.98 "/> <circle fill="#FFFF00" stroke="#000000" stroke-width="3" stroke-miterlimit="10" cx="28.5" cy="29.98" r="27"/> <circle fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" cx="28.5" cy="29.98" r="19"/> <path fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" d="M5.72,14.7c-3.02-3.02-3.02-7.92,0-10.94 s7.92-3.02,10.94,0L5.72,14.7z"/> <path fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" d="M40.25,3.76c3.02-3.02,7.92-3.02,10.94,0 c3.02,3.02,3.02,7.92,0,10.94L40.25,3.76z"/> <polyline fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="37,38.48 29,30.48 29,14.48 "/> </svg>
+			<svg id="clock" width="50" data-obstacle="false" version="1.1" baseProfile="tiny"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"x="0px" y="0px" viewBox="0 0 57 63.48" xml:space="preserve"> <polygon fill="#FFFF00" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="16.5,48.98 24.5,48.98 18.5,61.98 10.5,61.98 "/> <polygon fill="#FFFF00" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="41.5,48.98 33.5,48.98 39.5,61.98 47.5,61.98 "/> <circle fill="#FFFF00" stroke="#000000" stroke-width="3" stroke-miterlimit="10" cx="28.5" cy="29.98" r="27"/> <circle fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" cx="28.5" cy="29.98" r="19"/> <path fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" d="M5.72,14.7c-3.02-3.02-3.02-7.92,0-10.94 s7.92-3.02,10.94,0L5.72,14.7z"/> <path fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" d="M40.25,3.76c3.02-3.02,7.92-3.02,10.94,0 c3.02,3.02,3.02,7.92,0,10.94L40.25,3.76z"/> <polyline fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="37,38.48 29,30.48 29,14.48 "/> </svg>
 			<svg id="books" width="120" data-height="122" data-obstacle="true" version="1.1" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"x="0px" y="0px" viewBox="0 0 139 123" xml:space="preserve"> <rect x="105.5" y="16.5" fill="#0000FF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="32" height="105"/> <rect x="88.5" y="35.5" width="16" height="86"/> <path d="M103,37v83H90V37H103 M106,34H87v89h19V34L106,34z"/> <rect x="41.5" y="10.5" fill="#C3C3C3" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="25" height="111"/> <rect x="21.5" y="3.5" fill="#C300C3" width="20" height="118"/> <path d="M40,5v115H23V5H40 M43,2H20v121h23V2L43,2z"/> <rect x="1.5" y="20.5" width="17" height="101"/> <path d="M17,22v98H3V22H17 M20,19H0v104h20V19L20,19z"/> <rect x="105.5" y="27.5" fill="#FFFF00" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="32" height="27"/> <rect x="65.5" y="1.5" fill="#00C300" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="22" height="120"/> <rect x="65.5" y="16.5" width="21.71" height="41.27"/> <rect x="2" y="31.56" fill="#0000FF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="18" height="5.57"/> <rect x="2" y="101.78" fill="#0000FF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="18" height="5.57"/> </svg>
 			<svg id="shelf" width="370" data-height="11" data-obstacle="true" version="1.1" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 422.23 78.86" xml:space="preserve"> <polygon fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="383.2,26.15 394.69,26.15 394.69,65.82 383.2,73.78 "/> <polygon fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="371.71,26.15 382.24,26.15 382.24,73.78 371.71,65.82 "/> <rect x="387.03" y="9.16" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="7.66" height="26.32"/> <rect x="371.71" y="9.16" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="7.66" height="26.32"/> <rect x="379.37" y="26.15" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="7.66" height="51.2"/> <rect x="379.37" y="9.16" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="7.66" height="33.98"/> <polygon fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="50.01,26.15 61.5,26.15 61.5,65.82 50.01,73.78 "/> <polygon fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="38.52,26.15 49.05,26.15 49.05,73.78 38.52,65.82 "/> <rect x="53.84" y="9.16" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="7.66" height="26.32"/> <rect x="38.52" y="9.16" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="7.66" height="26.32"/> <rect x="46.18" y="26.15" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="7.66" height="51.2"/> <rect x="46.18" y="9.16" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="7.66" height="33.98"/> <rect x="1.5" y="1.5" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="419.23" height="15.32"/> </svg>
 			<svg id="battery" width="20" data-obstacle="false" version="1.1" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 27 53.5" xml:space="preserve"> <path fill="#C3C300" d="M5.38,52c-2.14,0-3.88-1.74-3.88-3.88V10.88C1.5,8.74,3.24,7,5.38,7h16.23c2.14,0,3.88,1.74,3.88,3.88 v37.23c0,2.14-1.74,3.88-3.88,3.88H5.38z"/> <path d="M21.62,8.5c1.31,0,2.38,1.07,2.38,2.38v37.23c0,1.31-1.07,2.38-2.38,2.38H5.38C4.07,50.5,3,49.43,3,48.12V10.88 C3,9.57,4.07,8.5,5.38,8.5H21.62 M21.62,5.5H5.38C2.41,5.5,0,7.91,0,10.88v37.23c0,2.97,2.41,5.38,5.38,5.38h16.23 c2.97,0,5.38-2.41,5.38-5.38V10.88C27,7.91,24.59,5.5,21.62,5.5L21.62,5.5z"/> <path fill="#828282" stroke="#000000" stroke-width="3" stroke-miterlimit="10" d="M18,10.5V3.92c0-1.34-1.08-2.42-2.42-2.42h-3.71 c-1.34,0-2.42,1.08-2.42,2.42v6.58"/> <path d="M27,25.5V10.88c0-2.97-2.41-5.38-5.38-5.38H5.38C2.41,5.5,0,7.91,0,10.88V25.5H27z"/> </svg>
