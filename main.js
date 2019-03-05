@@ -50,10 +50,10 @@ class GliderGame {
 			y = enemy.y+= 5;
 			x = enemy.x += -6
 			if (enemy.y >= this.canvas.elem.height) {
-					enemy.y = -100; 
-					enemy.start = 0
-					enemy.x = Math.floor(Math.random()*1280)
-					enemy.start++
+				enemy.y = -100; 
+				enemy.start = 0
+				enemy.x = Math.floor(Math.random()*1280)
+				enemy.start++
 			}
 			x = enemy.x;
 			 y= enemy.y;
@@ -70,7 +70,7 @@ class GliderGame {
 		const plane = this.obstacles.glider;
 		if (enemy.isObstacle == "true") {
 				if (plane.x+plane.w >= x && x+enemy.w >= plane.x) {
-							if(plane.y+plane.h >= y && y+enemy.h >= plane.y) this.minusLife();
+						if(plane.y+plane.h >= y && y+enemy.h >= plane.y) this.minusLife();
 					}
 			}
 		});
@@ -165,5 +165,4 @@ class GliderGame {
 		this.render();
 	};
 }
-
 new GliderGame();
