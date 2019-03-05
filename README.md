@@ -1,6 +1,6 @@
-#  Glider - Simple 2D game
+#  Simple 2D game - Glider
 
-[Demo](https://matthewthomsonnz.github.io/canvas-game-glider/)
+### [Demo](https://matthewthomsonnz.github.io/canvas-game-glider/)
 
 ## Controls
 A - move left
