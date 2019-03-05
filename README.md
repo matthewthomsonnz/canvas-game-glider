@@ -1,11 +1,11 @@
-#  Glider - simple 2D Canvas game
+#  Glider - Simple 2d canvas game
+
+[Demo](https://matthewthomsonnz.github.io/2D-Canvas-Game-Demo/)
 
 ## Controls
 A - move left
 
 D - move right
-
-[Demo](https://matthewthomsonnz.github.io/2D-Canvas-Game-Demo/)
 
 ## About
 [Recreation of Glider (1988) by John Calhoun ](https://archive.org/details/win3_Glider40)
