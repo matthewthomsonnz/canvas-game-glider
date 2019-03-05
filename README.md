@@ -1,4 +1,4 @@
-#  Glider - Simple 2d game
+#  Glider - Simple 2D game
 
 [Demo](https://matthewthomsonnz.github.io/2D-Canvas-Game-Demo/)
 
