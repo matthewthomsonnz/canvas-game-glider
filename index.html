@@ -83,7 +83,7 @@
 									if(plane.y+plane.h >= y && y+enemy.h >= plane.y) this.minusLife();
 							}
 					}
-				})
+				});
 			}
 			levels(){
 				let levelObstacles;
@@ -164,10 +164,10 @@
 				case "D": case "d":
 					this.keyDown.d = down;
 					break;
-				}
+				};
 			}
 			minusLife(){
-				this.obstacles.glider.y=this.obstacles.glider.x=40;
+				this.obstacles.glider.y = this.obstacles.glider.x=40;
 			}
 			startAnimate () {
 				requestAnimationFrame(this.startAnimate.bind(this));
@@ -196,5 +196,5 @@
 		<script>
 			new GliderGame();
 		</script>
-	</body>
+</body>
 </html>
