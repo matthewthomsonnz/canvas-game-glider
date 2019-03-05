@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Glider Demo - MT</title>
-	<style>#sprites {display: none}</style>
+	<style>#svg {display: none}</style>
 </head>
 <body>
 	<canvas width="1280" height="720"></canvas>
@@ -18,10 +18,10 @@
 					requestAnimationFrame: window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame,
 					returnAllObstacles: function(){
 						let obj = {}
-						var children = [].slice.call(document.getElementById("sprites").children).forEach(function(svgElement){
+						var children = [].slice.call(document.getElementById("svg").children).forEach(function(svgElement){
 							let eachObstacle = {};
 							eachObstacle.elem = svgElement;
-							eachObstacle.boundaries = JSON.parse("[" +svgElement.getAttribute('data-boundaries')+ "]")
+							eachObstacle.boundaries = JSON.parse("[" +svgElement.getAttribute('data-boundaries')+ "]");
 							eachObstacle.svg = new Image();
 							eachObstacle.svg.src = "data:image/svg+xml;base64,"+btoa(eachObstacle.elem.outerHTML);
 							eachObstacle.x = 50;
@@ -29,10 +29,8 @@
 							eachObstacle.start = 0;
 							eachObstacle.isObstacle = svgElement.getAttribute('data-obstacle');
 							eachObstacle.w = parseInt(svgElement.getAttribute('width'));
-							eachObstacle.h = JSON.parse(svgElement.getAttribute('data-height'))
-							eachObstacle.peak = false;
-							eachObstacle.right = false;
-							eachObstacle.left = false;
+							eachObstacle.h = JSON.parse(svgElement.getAttribute('data-height'));
+							eachObstacle.peak = eachObstacle.right = eachObstacle.left = false;
 							obj[svgElement.id] = eachObstacle;
 
 						});
@@ -66,15 +64,15 @@
 							enemy.start = 0
 							enemy.x = Math.floor(Math.random()*1280)
 							enemy.start++
-						}
-						x = enemy.x;
-						y= enemy.y;
+					}
+					x = enemy.x;
+					 y= enemy.y;
 				}
 				this.canvas.context.drawImage(enemy.svg, x, y);
 				if (enemy.elem.id == "vent") {
-					if (this.obstacles.glider.x >= x-70 && this.obstacles.glider.x <= x+70 ) {
+					if (this.obstacles.glider.x >= x-70 && this.obstacles.glider.x <= x+70) {
 						if (this.obstacles.glider.y >= 60) {
-							this.obstacles.glider.y -= 7
+							this.obstacles.glider.y -= 7;
 						}
 					}
 					return;
@@ -92,14 +90,14 @@
 				let ob = this.obstacles;
 				switch (this.currentLevel) {
 				case 0:
-					levelObstacles = [ [150,670,ob.vent], [410,450,ob.table], [420, 295, ob.computer], [850, 396, ob.clock], [1040, 670, ob.vent], [222, 109, ob.cracks]]
+					levelObstacles = [[150,670,ob.vent], [410,450,ob.table], [420, 295, ob.computer], [850, 396, ob.clock], [1040, 670, ob.vent], [222, 109, ob.cracks]];
 					if (this.obstacles.glider.x < 20) this.obstacles.glider.x += 7;
 				break;
 				case 1:
-					levelObstacles = [[150, 670, ob.vent], [1040, 670, ob.vent], [480, 230, ob.shelf], [480, 127, ob.books], [600, 127, ob.books], [799, 177, ob.clock], [222, 109, ob.pipe]]
+					levelObstacles = [[150, 670, ob.vent], [1040, 670, ob.vent], [480, 230, ob.shelf], [480, 127, ob.books], [600, 127, ob.books], [799, 177, ob.clock], [222, 109, ob.pipe]];
 				break;
 				case 2:
-					levelObstacles = [[150, 670, ob.vent], [840, 670, ob.vent], [1090, 670, ob.vent], [482, 450, ob.table], [500, 397, ob.clock]]
+					levelObstacles = [[150, 670, ob.vent], [840, 670, ob.vent], [1090, 670, ob.vent], [482, 450, ob.table], [500, 397, ob.clock]];
 				break;
 				case 3:
 					levelObstacles = [[110, 670, ob.vent], [280, 445, ob.cabinet], [482, 160, ob.shelf], [820, 122, ob.battery], [940, 670, ob.vent]];
@@ -111,9 +109,9 @@
 				  levelObstacles = [[230, 670, ob.vent], [512, 383, ob.candle], [400, 450, ob.table], [690, 346, ob.books], [1040, 670, ob.vent], [500, 500, ob.helicopter]];
 				break;
 				case 6:
-				levelObstacles = []
+				levelObstacles = [];
 				}
-				this.make(levelObstacles)
+				this.make(levelObstacles);
 			}
 			init(){
 				this.canvas.elem = document.getElementsByTagName("canvas")[0];
@@ -121,7 +119,7 @@
 				this.canvas.w = this.canvas.elem.width;
 				this.canvas.h = this.canvas.elem.height;
 				this.returnAllObstacles();
-				this.startAnimate()
+				this.startAnimate();
 			}
 			render() {
 				const c = this.canvas.context
@@ -140,20 +138,20 @@
 				c.strokeRect(-10,100,c.canvas.width+20,10);
 				c.strokeRect(-10,580,c.canvas.width+20,20);
 				c.strokeRect(-10,580,c.canvas.width+20,50);
-				this.levels()
+				this.levels();
 				c.drawImage(this.obstacles.glider.svg, this.obstacles.glider.x, this.obstacles.glider.y);
 			}
 			gliderPosition(){
-				this.obstacles.glider.y <= this.canvas.h-60 ? this.obstacles.glider.y += 3 : this.minusLife()
+				this.obstacles.glider.y <= this.canvas.h-60 ? this.obstacles.glider.y += 3 : this.minusLife();
 				this.keyDown.d == true ? this.obstacles.glider.x += 6 : null;
 				this.keyDown.a == true ? this.obstacles.glider.x -= 6 : null;
 				if (this.obstacles.glider.x >= this.canvas.w-100) {
-					this.currentLevel++
-					this.obstacles.glider.x = 50
+					this.currentLevel++;
+					this.obstacles.glider.x = 50;
 				};
 				if (this.obstacles.glider.x <= 0) {
-					this.currentLevel--
-					this.obstacles.glider.x = this.canvas.w-120
+					this.currentLevel--;
+					this.obstacles.glider.x = this.canvas.w-120;
 				};
 			}
 			key(e) {
@@ -169,16 +167,16 @@
 				}
 			}
 			minusLife(){
-				this.obstacles.glider.y=this.obstacles.glider.x=40
+				this.obstacles.glider.y=this.obstacles.glider.x=40;
 			}
 			startAnimate () {
 				requestAnimationFrame(this.startAnimate.bind(this));
-				this.gliderPosition()
+				this.gliderPosition();
 				this.render();
 			};
 		}
 	</script>
-		<div id="sprites">
+		<div id="svg">
 			<svg id="glider" width="110" data-height="36" data-obstacle="false" data-up="['cat', 'dog', 'bird']" version="1.1" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 103 35.5" xml:space="preserve"> <polygon fill="#FFFFFF" points="28.83,35 39.3,15 53.79,15 73.79,35"/> <path d="M53.59,15.5l19,19H29.65l9.95-19H53.59 M54,14.5H39l-11,21h47L54,14.5L54,14.5z"/> <polygon fill="#FFFFFF" points="21.66,1 48.62,1 52.22,14 38.7,14 29.91,30.79"/> <path d="M48.24,1.5l3.32,12H39h-0.61l-0.28,0.54l-8.06,15.4L22.31,1.5H48.24 M49,0.5H21l8.76,31.64L39,14.5h13.88L49,0.5L49,0.5z"/> <polygon fill="#FFFFFF" points="21.68,0.5 21.5,0 21.21,0.5"/> <polygon points="21.5,0 21.21,0.5 21.68,0.5 21.5,0"/> <polygon fill="#FFFFFF" points="7.37,25 20.9,2.01 27.27,25	"/> <path d="M20.73,3.28l5.88,21.22H8.25L20.73,3.28 M21.07,0.74L6.5,25.5h21.42L21.07,0.74L21.07,0.74z"/> <polygon fill="#FFFFFF" points="0.67,3 19.16,3 6.98,23.7	"/> <path d="M18.28,3.5L7.12,22.47L1.35,3.5H18.28 M20.03,2.5H0l6.83,22.44L20.03,2.5L20.03,2.5z"/> <polygon fill="#FFFFFF" points="74.45,34.25 54.21,14 53.26,14 52.57,11.5 95.4,11.5 75.32,34.45"/> <path d="M94.3,12L75.14,33.89l-0.44-0.1l-20-20l-0.29-0.29H54h-0.36L53.22,12H94.3 M96.5,11H51.91l0.97,3.5H54l20.2,20.2l1.3,0.3L96.5,11L96.5,11z"/> <polygon fill="#FFFFFF" points="88.41,21 95.17,13.29 101.9,21"/> <path d="M95.16,14.04l5.64,6.46H89.52L95.16,14.04 M95.17,12.53L95.17,12.53l-7.85,8.97H103L95.17,12.53L95.17,12.53z"/> <polygon fill="#FFFFFF" points="52.29,10.5 51.46,7.5 84.33,7.5 88.33,10.5"/> <path d="M84.17,8l2.67,2H52.67l-0.55-2H84.17 M84.5,7H50.8l1.11,4h37.93L84.5,7L84.5,7z"/> </svg> 
 			<svg id="vent" width="130" data-obstacle="false" data-boundaries="[[0,0,120,200], [220,220,120,120]]" version="1.1" baseProfile="tiny"xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"x="0px" y="0px" viewBox="0 0 110 33" xml:space="preserve"> <path fill="#C3C300" d="M23,31.5c-0.41,0-0.8-0.17-1.09-0.47l-20-21C1.65,9.76,1.5,9.39,1.5,9V3c0-0.83,0.67-1.5,1.5-1.5h84 c0.41,0,0.8,0.17,1.09,0.47l20,21c0.27,0.28,0.41,0.65,0.41,1.03v6c0,0.83-0.67,1.5-1.5,1.5H23z"/> <path d="M87,3l20,21v6H23L3,9V3H87 M87,0H3C1.34,0,0,1.34,0,3v6c0,0.77,0.3,1.51,0.83,2.07l20,21C21.39,32.66,22.18,33,23,33h84 c1.66,0,3-1.34,3-3v-6c0-0.77-0.3-1.51-0.83-2.07l-20-21C88.61,0.34,87.82,0,87,0L87,0z"/> <line fill="#FFFFFF" x1="30" y1="23.95" x2="13" y2="6.1"/> <line fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="30" y1="23.95" x2="13" y2="6.1"/> <line fill="#FFFFFF" x1="36.8" y1="23.95" x2="19.8" y2="6.1"/> <line fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="36.8" y1="23.95" x2="19.8" y2="6.1"/> <line fill="#FFFFFF" x1="43.6" y1="23.95" x2="26.6" y2="6.1"/> <line fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="43.6" y1="23.95" x2="26.6" y2="6.1"/> <line fill="#FFFFFF" x1="50.4" y1="23.95" x2="33.4" y2="6.1"/> <line fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="50.4" y1="23.95" x2="33.4" y2="6.1"/> <line fill="#FFFFFF" x1="57.2" y1="23.95" x2="40.2" y2="6.1"/> <line fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="57.2" y1="23.95" x2="40.2" y2="6.1"/> <line fill="#FFFFFF" x1="64" y1="23.95" x2="47" y2="6.1"/> <line fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="64" y1="23.95" x2="47" y2="6.1"/> <line fill="#FFFFFF" x1="70.8" y1="23.95" x2="53.8" y2="6.1"/> <line fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="70.8" y1="23.95" x2="53.8" y2="6.1"/> <line fill="#FFFFFF" x1="77.6" y1="23.95" x2="60.6" y2="6.1"/> <line fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="77.6" y1="23.95" x2="60.6" y2="6.1"/> <line fill="#FFFFFF" x1="84.4" y1="23.95" x2="67.4" y2="6.1"/> <line fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="84.4" y1="23.95" x2="67.4" y2="6.1"/> <line fill="#FFFFFF" x1="91.2" y1="23.95" x2="74.2" y2="6.1"/> <line fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="91.2" y1="23.95" x2="74.2" y2="6.1"/> <line fill="#FFFFFF" x1="98" y1="23.95" x2="81" y2="6.1"/> <line fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="98" y1="23.95" x2="81" y2="6.1"/> </svg>
 			<svg id="cabinet" width="480" data-obstacle="true" data-animals="['cat', 'dog', 'bird']" version="1.1" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 440.36 221.63" xml:space="preserve"> <rect x="12.99" y="195.61" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="412.94" height="24.52"/> <rect x="0.78" y="16.05" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="437.36" height="192.4"/> <rect x="1.5" y="1.5" fill="#FF0000" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="437.36" height="14.55"/> <rect x="26.01" y="33.67" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="108.77" height="158.81"/> <rect x="165.07" y="33.67" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="108.77" height="158.81"/> <rect x="304.71" y="33.67" fill="#E16200" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="108.77" height="158.81"/> </svg>
